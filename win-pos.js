@@ -5,7 +5,7 @@ var leftMostScreen = 1
 // Some setup used by both reading and writing
 var dir = mp.utils.split_path(mp.get_script_file())[0]
 var rect_path = mp.utils.join_path(dir, "last_window_coords.txt")
-
+var script_path = mp.utils.join_path(dir, "save-pos.sh")
 // I modified and ported it to Linux from https://github.com/TheOddler/mpv-config/blob/master/scripts/remember_last_window_rect.js
 
 // Read last window rect if present
@@ -32,7 +32,7 @@ function on_exit() {
         name: "subprocess",
         playback_only: false,
         capture_stdout: true,
-        args : ["save-pos"]
+        args : ["bash", script_path]
     });
 
 
